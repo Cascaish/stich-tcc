@@ -1,3 +1,4 @@
+
 import mysql from 'mysql2/promise.js'
 
 const con = await mysql.createConnection({
@@ -21,4 +22,7 @@ const con = await mysql.createConnection({
     }
     })
 
+
+    console.log('Subiu DB');
+    
     export default con;

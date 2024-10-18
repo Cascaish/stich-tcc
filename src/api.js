@@ -10,4 +10,4 @@ servidor.use(express.json());
 
 rotas(servidor);
 
-servidor.listen(process.env.PORTA, () => console.log(`subiu o BumBum do casca na porta${process.env.PORTA}`))
+servidor.listen(process.env.PORTA, () => console.log(`subiu o BumBum do casca na porta ${process.env.PORTA}`))
