@@ -6,9 +6,9 @@ const endpoints = Router();
 
 endpoints.post('/usuario' ,async (req, resp) =>{
     
-    try {
-        let usuario = req.body;
-        let uss = await loginUsuario(usuario);
+  
+        let user = req.body;
+        let uss = await loginUsuario(user);
 
 
         if (uss == null) {
@@ -19,19 +19,19 @@ endpoints.post('/usuario' ,async (req, resp) =>{
               "token": token
           })
       }
-  }catch (err) {
+
         
         resp.status(400).send({
             erro: err.message
     })
-    
-    }})
+  })
+  
 
 
     endpoints.post('/inserirUsuario' ,async (req, resp) =>{
     try {
-      let usuario = req.body;
-      let ins = await inserirUsuario(usuario);
+      let user = req.body;
+      let ins = await inserirUsuario(user);
   
      if(ins === null){
        resp.send({erro:"Usuario ou senha incorreta(s)"})

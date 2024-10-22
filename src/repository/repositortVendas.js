@@ -17,7 +17,7 @@ export async function inserirVendas(vendas){
 }
 
 
-
+ 
 
 export async function consultarVendas(){
 
