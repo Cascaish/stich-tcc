@@ -33,10 +33,17 @@ export async function loginUsuario(user){
        and ds_senha = ?
   `;
 
-  let resposta = await con.query(comando , [user.nome, user.email, user.senha]);
-  let info = resposta[0];
-  return info;
+  let registros = await con.query(comando, [user.nome]);
+  let usuario = registros[0][0]; 
 
- 
+  let hash = crypto.SHA256(user.senha).toString();
+
+  if (hash === usuario.senha) {
+      return usuario; 
+  } else {
+      return null; 
+  }
 
 }
+
+
