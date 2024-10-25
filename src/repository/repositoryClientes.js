@@ -36,6 +36,10 @@ let resposta = await con.query(comando);
         let registros = resposta[0]
     
         return registros;
+
+
+  
+      
 }
 
 
@@ -53,7 +57,7 @@ export async function consultarClientesTelefone(telefone){
            where numero = ?;
   `;
   let resposta = await con.query(comando,[telefone]);
-          let registros = resposta[0];
+  let registros = resposta[0];
       
           return registros;
   }

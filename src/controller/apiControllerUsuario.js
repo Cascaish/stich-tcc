@@ -1,13 +1,14 @@
 import { Router } from "express";
 import { inserirUsuario, loginUsuario } from "../repository/repositoryUsuario.js";
 import { gerarToken } from "../utils/jwt.js";
+import { consultarClientesTelefone } from "../repository/repositoryClientes.js";
 
 const endpoints = Router();
 
 endpoints.post('/usuario' ,async (req, resp) =>{
     
-  
-        let user = req.body;
+  try {
+    let user = req.body;
         let uss = await loginUsuario(user);
 
 
@@ -20,10 +21,12 @@ endpoints.post('/usuario' ,async (req, resp) =>{
           })
       }
 
+  } catch (err) {
+    resp.status(400).send({
+      erro: err.message
+  })
+  }
         
-        resp.status(400).send({
-            erro: err.message
-    })
   })
   
 
@@ -47,8 +50,9 @@ endpoints.post('/usuario' ,async (req, resp) =>{
     })
     }
           
-            })
-        
+})
+
+   
     
 
 export default endpoints;

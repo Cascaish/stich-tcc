@@ -43,20 +43,30 @@ endpoints.post('/clientesInserir' ,async (req, resp) =>{
     })
 
 
-endpoints.get('/clientesConsultar/:telefone', async (req, resp) =>{
-    try {
-        let telefone = req.params.telefone;
-        let registros = await consultarClientesTelefone(telefone);
-        resp.send({
-             Consultar: registros
-        } );
+    endpoints.get('/consultarTelefone/:telefone', async (req, resp) => {
+        try {
+          let telefone = req.params.telefone;
+          let consultarTelefone = await consultarClientesTelefone(telefone);
 
-    } catch (err) {
-        resp.status(400).send({
+          if (telefone == null) {
+            resp.send({
+                erro: 'Nenhum telefone encontrado.'
+            })
+          } else{
+            resp.send({
+            consulta: consultarTelefone
+          })
+          }
+      
+          
+          
+        } catch (err) {
+          resp.status(400).send({
             erro: err.message
-        })
-    }
-    })
+          })
+        }
+      })
+           
 
 
 endpoints.put('/clientesAlterar/:telefone' ,async (req, resp) =>{
