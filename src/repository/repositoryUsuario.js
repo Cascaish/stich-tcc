@@ -30,12 +30,11 @@ export async function loginUsuario(user){
        email  email,
        ds_senha senha
   from usuario
-  where nm_usuario = ?
-  and email = ?
+  where email = ?
   and ds_senha = ?;
   `
   let hash = crypto.SHA256(user.senha).toString();
-  let registros = await con.query(comando, [user.nome, user.email, hash]);
+  let registros = await con.query(comando, [user.email, hash]);
   let usuario = registros[0][0]; 
 
 
@@ -51,3 +50,14 @@ export async function loginUsuario(user){
 }
 
 
+export const listarUsuarios = async () => {
+  const comando = 
+  `
+  select id_usuario id,
+         nm_usuario nome,
+         email      email
+    from usuario                 
+  `
+  const [registros] = await con.query(comando)
+  return registros
+}
