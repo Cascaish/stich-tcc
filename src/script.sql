@@ -44,4 +44,4 @@ create table categoria(
         img_logo TEXT,
 
         FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
-    )
+    );
