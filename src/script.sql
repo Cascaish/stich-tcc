@@ -29,19 +29,19 @@ CREATE TABLE adm (
     FOREIGN KEY (id_clientes) REFERENCES clientes(id_cliente)
 );
 
-create database categoria(
+create table categoria(
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nm_nome VARCHAR(255),
-    ds_descricao VARCHAR(255)
+    nm_nome TEXT,
+    ds_descricao TEXT
 );
 
     create table produtos(
         id_produto INT AUTO_INCREMENT PRIMARY KEY,
         id_categoria INT,
-        nm_nome	   VARCHAR(255),
+        nm_nome	   TEXT,
         vl_valor   VARCHAR(255),
-        ds_descricao VARCHAR(255),
-        img_logo VARCHAR(255),
+        ds_descricao TEXT,
+        img_logo TEXT,
 
         FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
     )
