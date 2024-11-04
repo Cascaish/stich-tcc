@@ -30,18 +30,18 @@ CREATE TABLE adm (
 );
 
 create database categoria(
-    id_categoria INT AUTO_INCREMENT PRIMARY KEY ,
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nm_nome TEXT,
     ds_descricao TEXT
 );
 
     create table produtos(
-        id_produto INT AUTO_INCREMENT PRIMARY KEY ,
+        id_produto INT AUTO_INCREMENT PRIMARY KEY,
         id_categoria INT,
         nm_nome	   TEXT,
         vl_valor   VARCHAR(255),
         ds_descricao TEXT,
-        img_logo TEXT
+        img_logo TEXT,
 
         FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
     )
